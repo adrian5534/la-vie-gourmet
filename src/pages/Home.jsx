@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../styles/global.css";
-import "../styles/home.css";
+import "../styles/Global.css";
+import "../styles/Home.css";
 
 const features = [
   {
@@ -74,24 +74,26 @@ export default function Home() {
   return (
     <div style={{ background: "var(--background)", minHeight: "100vh", paddingTop: "36px" }}>
       {/* Hero Section */}
-      <div className="hero-section">
-        <div className="overlay" />
-        <div className="hero-content">
-          <h1 className="hero-title">An Evening to Remember</h1>
-          <p className="hero-subtitle">Modern cuisine, impeccable service.</p>
-          <div className="hero-cta">
-            <button className="btn btn-primary">
-              <span className="me-2">
-                <i className="fas fa-book" style={{ fontSize: 20, color: "var(--primary-foreground)" }}></i>
-              </span>
-              View Menu
-            </button>
-            <button className="btn btn-secondary">
-              <span className="me-2">
-                <i className="fas fa-calendar-alt" style={{ fontSize: 20, color: "var(--secondary-foreground)" }}></i>
-              </span>
-              Reserve a Table
-            </button>
+      <div className="d-flex justify-content-center">
+        <div className="hero-section" style={{ maxWidth: "1600px", width: "100%", margin: "0 24px" }}>
+          <div className="overlay" />
+          <div className="hero-content">
+            <h1 className="hero-title">An Evening to Remember</h1>
+            <p className="hero-subtitle">Modern cuisine, impeccable service.</p>
+            <div className="hero-cta">
+              <button className="btn btn-primary">
+                <span className="me-2">
+                  <i className="fas fa-book" style={{ fontSize: 20, color: "var(--primary-foreground)" }}></i>
+                </span>
+                View Menu
+              </button>
+              <button className="btn btn-secondary">
+                <span className="me-2">
+                  <i className="fas fa-calendar-alt" style={{ fontSize: 20, color: "var(--secondary-foreground)" }}></i>
+                </span>
+                Reserve a Table
+              </button>
+            </div>
           </div>
         </div>
       </div>
