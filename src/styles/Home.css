@@ -72,7 +72,7 @@
 .hero-cta .btn {
   font-weight: 500;
   font-size: 1.1rem;
-  padding: 10px 28px;
+  padding: 10px 38px; /* Increased horizontal padding for more space */
   border-radius: 12px;
   border: none;
   display: flex;
@@ -249,7 +249,7 @@
     word-break: break-word;
   }
   .hero-cta {
-    flex-direction: row; /* Side-by-side buttons */
+    flex-direction: row;
     gap: 0.5rem;
     width: 100%;
     justify-content: center;
@@ -260,7 +260,7 @@
     min-width: 120px;
     justify-content: center;
     font-size: 1rem;
-    padding: 10px 0;
+    padding: 10px 28px;
   }
   .feature-card {
     flex-direction: row;
@@ -276,18 +276,23 @@
   }
   .about-img-container {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    flex: unset;
+    order: 1;
   }
   .about-img {
-    min-height: 140px;
-    height: 180px;
     width: 100%;
+    min-height: 180px;
+    height: auto;
     object-fit: cover;
     border-radius: 12px;
+    display: block;
   }
   .about-desc {
+    width: 100%;
     padding: 0;
     font-size: 0.98rem;
+    order: 2;
   }
   .dish-card {
     min-height: 220px;
@@ -324,7 +329,7 @@
     padding: 0 2px;
   }
   .hero-cta {
-    flex-direction: row; /* Keep buttons side-by-side */
+    flex-direction: row;
     gap: 0.5rem;
     width: 100%;
     justify-content: center;
@@ -334,7 +339,7 @@
     width: auto;
     min-width: 100px;
     font-size: 0.95rem;
-    padding: 8px 0;
+    padding: 8px 18px;
   }
   .feature-card,
   .about-card,
@@ -344,6 +349,31 @@
   .contact-card {
     padding: 0.5rem;
     border-radius: 8px;
+  }
+  .about-card {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    align-items: stretch;
+  }
+  .about-img-container {
+    width: 100%;
+    margin-bottom: 0;
+    flex: unset;
+    order: 1;
+  }
+  .about-img {
+    width: 100%;
+    min-height: 120px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+  .about-desc {
+    width: 100%;
+    padding: 0;
+    font-size: 0.95rem;
+    order: 2;
   }
   .dish-img {
     height: 140px;

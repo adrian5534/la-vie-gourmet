@@ -125,7 +125,7 @@ export default function Home() {
         </div>
         {/* About Section */}
         <h5 className="mb-3 fw-bold">About the Experience</h5>
-        <div className="about-card mb-4 d-flex flex-row align-items-center">
+        <div className="about-card mb-4">
           <div className="about-img-container" style={{ flex: "0 0 40%" }}>
             <img
               src="/about-placeholder.jpg"
