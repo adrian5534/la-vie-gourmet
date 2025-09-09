@@ -75,7 +75,7 @@ export default function Home() {
     <div style={{ background: "var(--background)", minHeight: "100vh", paddingTop: "36px" }}>
       {/* Hero Section */}
       <div className="d-flex justify-content-center">
-        <div className="hero-section" style={{ maxWidth: "1600px", width: "100%", margin: "0 24px" }}>
+        <div className="hero-section">
           <div className="overlay" />
           <div className="hero-content">
             <h1 className="hero-title">An Evening to Remember</h1>
@@ -100,9 +100,9 @@ export default function Home() {
       {/* Features Section */}
       <div className="container py-4">
         <h5 className="mb-3 fw-bold">Signature Highlights</h5>
-        <div className="row g-4 mb-4">
+        <div className="row g-4 mb-4 even-row">
           {features.map((feature, idx) => (
-            <div key={idx} className="col-12 col-md-4">
+            <div key={idx} className="col-12 col-md-4 h-100">
               <div className="feature-card">
                 {feature.icon}
                 <div>
@@ -140,9 +140,9 @@ export default function Home() {
         </div>
         {/* Featured Dishes */}
         <h5 className="mb-3 fw-bold">Featured Dishes</h5>
-        <div className="row g-4 mb-4">
+        <div className="row g-4 mb-4 even-row">
           {dishes.map((dish, idx) => (
-            <div key={idx} className="col-12 col-md-4">
+            <div key={idx} className="col-12 col-md-4 h-100">
               <div className="dish-card">
                 <img src={dish.img} alt={dish.name} className="dish-img" />
                 <div className="d-flex justify-content-between align-items-center mt-2">
@@ -175,9 +175,9 @@ export default function Home() {
         </div>
         {/* Critics Section */}
         <h5 className="mb-3 fw-bold">What Critics Say</h5>
-        <div className="row g-4 mb-4">
+        <div className="row g-4 mb-4 even-row">
           {critics.map((c, idx) => (
-            <div key={idx} className="col-12 col-md-4">
+            <div key={idx} className="col-12 col-md-4 h-100">
               <div className="critic-card">
                 <div style={{ fontStyle: "italic" }}>"{c.quote}"</div>
                 <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem", marginTop: "8px" }}>{c.source}</div>
@@ -187,14 +187,14 @@ export default function Home() {
         </div>
         {/* Contact Section */}
         <div className="row g-4 mb-4">
-          <div className="col-12 col-md-8">
+          <div className="col-12 col-lg-8">
             <div className="contact-card">
               <div><b>Address</b><br />120 Orchard St, New York, NY</div>
               <div><b>Hours</b><br />Tue–Sun: 5:30 PM – 10:00 PM</div>
               <div><b>Phone</b><br />(212) 555-0138</div>
             </div>
           </div>
-          <div className="col-12 col-md-4 d-flex align-items-end justify-content-end">
+          <div className="col-12 d-flex justify-content-end">
             <button className="btn btn-outline-secondary">
               <i className="fas fa-envelope me-2"></i>
               Get in Touch
