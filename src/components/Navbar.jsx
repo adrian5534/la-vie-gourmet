@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../styles/Navbar.css";
@@ -10,10 +11,14 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg custom-navbar">
       <div className="container-fluid">
-        <a className="navbar-brand d-flex align-items-center" href="#" style={{ color: "var(--foreground)", fontWeight: 700 }}>
+        <NavLink
+          className="navbar-brand d-flex align-items-center"
+          to="/"
+          style={{ color: "var(--foreground)", fontWeight: 700 }}
+        >
           <span className="navbar-logo" />
           La Vie Gourmet
-        </a>
+        </NavLink>
         {/* Burger Icon */}
         <button
           className="navbar-toggler"
@@ -26,46 +31,94 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-none d-lg-flex flex-row gap-3">
           <li className="nav-item">
-            <a className="nav-link active nav-home" href="#">Home</a>
+            <NavLink className="nav-link nav-home" to="/" end>
+              Home
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Menu</a>
+            <NavLink className="nav-link" to="/menu">
+              Menu
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Reservations</a>
+            <NavLink className="nav-link" to="/reservations">
+              Reservations
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">About Chef</a>
+            <NavLink className="nav-link" to="/about-chef">
+              About Chef
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Contact</a>
+            <NavLink className="nav-link" to="/contact">
+              Contact
+            </NavLink>
           </li>
         </ul>
         {/* Mobile Slide-out Menu */}
-        <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-          <button className="close-btn" onClick={() => setMenuOpen(false)}>
-            <span className="fas fa-times"></span>
-          </button>
-          <ul className="mobile-nav-list">
-            <li>
-              <a className="nav-link active nav-home" href="#" onClick={() => setMenuOpen(false)}>Home</a>
-            </li>
-            <li>
-              <a className="nav-link" href="#" onClick={() => setMenuOpen(false)}>Menu</a>
-            </li>
-            <li>
-              <a className="nav-link" href="#" onClick={() => setMenuOpen(false)}>Reservations</a>
-            </li>
-            <li>
-              <a className="nav-link" href="#" onClick={() => setMenuOpen(false)}>About Chef</a>
-            </li>
-            <li>
-              <a className="nav-link" href="#" onClick={() => setMenuOpen(false)}>Contact</a>
-            </li>
-          </ul>
-        </div>
-        {/* Overlay for mobile menu */}
-        {menuOpen && <div className="mobile-menu-overlay" onClick={() => setMenuOpen(false)} />}
+        {menuOpen && (
+          <>
+            <div className="mobile-menu open">
+              <button className="close-btn" onClick={() => setMenuOpen(false)}>
+                <span className="fas fa-times"></span>
+              </button>
+              <ul className="mobile-nav-list">
+                <li>
+                  <NavLink
+                    className="nav-link nav-home"
+                    to="/"
+                    end
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to="/menu"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Menu
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to="/reservations"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Reservations
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to="/about-chef"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    About Chef
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to="/contact"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Contact
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+            {/* Overlay for mobile menu */}
+            <div
+              className="mobile-menu-overlay"
+              onClick={() => setMenuOpen(false)}
+            />
+          </>
+        )}
       </div>
     </nav>
   );
