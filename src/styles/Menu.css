@@ -17,6 +17,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-height: 100px;
+  position: relative;
 }
 
 .menu-card img {
@@ -25,12 +27,7 @@
   object-fit: cover;
   border-radius: 10px;
   background: var(--muted);
-}
-
-.menu-card .badge {
-  font-size: 0.95rem;
-  padding: 0.4em 0.8em;
-  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .menu-section h5 {
@@ -90,33 +87,26 @@
   background: var(--secondary);
   border-radius: 20px;
   font-weight: normal;
-  padding: 18px 24px;
+  padding: 12px 12px;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.3rem;
   align-items: center;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
-/* --- FILTER BUTTONS --- */
 .menu-filter-btn {
   background: var(--card);
   color: var(--accent-foreground);
   border: none;
   border-radius: 999px;
-  padding: 5px 10px;
-  font-size: 1.15rem;
+  padding: 4px 8px;
+  font-size: 1rem;
   box-shadow: 0 2px 8px rgba(31,41,51,0.06);
   transition: background 0.18s, color 0.18s, box-shadow 0.18s;
   outline: none;
-}
-
-.menu-header-actions .btn-primary:hover,
-.menu-header-actions .btn-primary:focus,
-.menu-header-actions .btn-primary:active {
-  background: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-  box-shadow: 0 4px 16px rgba(31,41,51,0.12) !important;
-  outline: none !important;
+  min-width: 60px;
+  text-align: center;
 }
 
 .menu-filter-btn:hover {
@@ -128,17 +118,21 @@
 .menu-header-actions {
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-.menu-header-actions .btn {
+.menu-header-actions .btn,
+.menu-header-btn {
   font-size: 1.08rem;
   padding: 10px 28px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(31,41,51,0.08);
   transition: box-shadow 0.2s;
+  white-space: nowrap;
 }
 
-.menu-header-actions .btn-primary {
+.menu-header-actions .btn-primary,
+.menu-header-btn {
   background: var(--primary) !important;
   color: var(--primary-foreground) !important;
   border: none !important;
@@ -151,33 +145,8 @@
   border: none;
 }
 
-.menu-filter-btn:hover,
-.menu-filter-btn:active,
-.menu-filter-btn.active,
-.menu-filter-btn:focus {
-  background: var(--primary);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(31,41,51,0.12);
-}
-
 .menu-header-actions .btn:hover,
-.menu-header-actions .btn:focus {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  box-shadow: 0 4px 16px rgba(31,41,51,0.12);
-  outline: none;
-}
-
-.menu-header-btn {
-  background: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-  border: none !important;
-  font-weight: 500;
-  border-radius: 10px;
-  padding: 10px 28px;
-  box-shadow: 0 2px 8px rgba(31,41,51,0.08);
-  transition: box-shadow 0.2s;
-}
+.menu-header-actions .btn:focus,
 .menu-header-btn:hover,
 .menu-header-btn:focus {
   background: var(--accent) !important;
@@ -185,7 +154,6 @@
   box-shadow: 0 4px 16px rgba(31,41,51,0.12);
   outline: none;
 }
-
 
 /* --- RESPONSIVE STYLES --- */
 @media (max-width: 1280px) {
@@ -196,6 +164,14 @@
   .menu-card {
     padding: 0.6rem 0.8rem;
     border-radius: 10px;
+  }
+  .menu-card img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+  }
+  .menu-section .menu-card .fw-bold {
+    font-size: 1rem;
   }
 }
 
@@ -208,6 +184,24 @@
     padding: 0.5rem 0.7rem;
     border-radius: 8px;
   }
+  .menu-card img {
+    width: 44px;
+    height: 44px;
+    border-radius: 7px;
+  }
+  .menu-section .menu-card .fw-bold {
+    font-size: 0.98rem;
+  }
+  .menu-header-actions .btn,
+  .menu-header-btn {
+    font-size: 1rem;
+    padding: 8px 18px;
+  }
+  .menu-filter-btn {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    min-width: 50px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -219,6 +213,14 @@
     padding: 0.4rem 0.5rem;
     border-radius: 7px;
   }
+  .menu-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+  }
+  .menu-section .menu-card .fw-bold {
+    font-size: 0.96rem;
+  }
   .col-lg-3 {
     max-width: 100%;
     flex: 0 0 100%;
@@ -227,6 +229,16 @@
   .col-lg-9 {
     max-width: 100%;
     flex: 0 0 100%;
+  }
+  .menu-header-actions .btn,
+  .menu-header-btn {
+    font-size: 0.96rem;
+    padding: 7px 10px;
+  }
+  .menu-filter-btn {
+    font-size: 0.93rem;
+    padding: 5px 10px;
+    min-width: 40px;
   }
 }
 
@@ -238,25 +250,40 @@
   .menu-card {
     padding: 0.3rem 0.4rem;
     border-radius: 6px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
   }
   .menu-card img {
-    margin-bottom: 0.5rem;
-    margin-right: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    margin-bottom: 0;
+    margin-right: 0.7rem;
+  }
+  .menu-section .menu-card .fw-bold {
+    font-size: 0.94rem;
   }
   .menu-section h5 {
     font-size: 1.1rem;
   }
+  .menu-header-actions {
+    gap: 0.5rem;
+  }
+  .menu-header-actions .btn,
+  .menu-header-btn {
+    font-size: 0.94rem;
+    padding: 6px 8px;
+  }
   .menu-filter-bar {
-    gap: 0.7rem;
-    padding: 12px 8px;
-    border-radius: 14px;
+    gap: 0.3rem;
+    padding: 7px 2px;
+    border-radius: 10px;
   }
   .menu-filter-btn {
-    padding: 9px 18px;
-    font-size: 1rem;
+    font-size: 0.92rem;
+    padding: 4px 7px;
+    min-width: 35px;
   }
 }
 
@@ -268,25 +295,57 @@
   .menu-card {
     padding: 0.2rem 0.2rem;
     border-radius: 5px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
   }
   .menu-card img {
-    width: 44px;
-    height: 44px;
-    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+  }
+  .menu-section .menu-card .fw-bold {
+    font-size: 0.9rem;
   }
   .menu-section h5 {
-    font-size: 1rem;
+    font-size: 0.98rem;
+  }
+  .menu-header-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+    width: 100%;
+  }
+  .menu-header-actions .btn,
+  .menu-header-btn {
+    font-size: 0.92rem;
+    padding: 6px 12px;
+    width: 90%;
+    margin-bottom: 0;
+    justify-content: center;
+    text-align: center;
   }
   .menu-filter-bar {
-    gap: 0.4rem;
-    padding: 8px 4px;
-    border-radius: 10px;
+    gap: 0.2rem;
+    padding: 4px 1px;
+    border-radius: 8px;
   }
   .menu-filter-btn {
-    padding: 7px 10px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    padding: 4px 5px;
+    min-width: 30px;
+  }
+  .d-flex.align-items-center.justify-content-between.mb-3 {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  .d-flex.align-items-center.justify-content-between.mb-3 h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
   }
 }

@@ -88,16 +88,15 @@ export default function Menu() {
                   7 courses • available nightly
                 </span>
               </div>
-              <div className="row g-3">
+              <div className="row g-3 align-items-stretch">
                 {tastingMenu.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                  <div key={idx} className="col-12 col-md-6 d-flex">
+                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
                       <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
                       <div className="flex-grow-1">
                         <div className="fw-bold">{item.name}</div>
                         <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
                       </div>
-                      {item.included && <span className="badge ms-3">Included</span>}
                     </div>
                   </div>
                 ))}
@@ -112,10 +111,10 @@ export default function Menu() {
                 <h5 className="fw-bold mb-0">Starters</h5>
                 <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Choose to begin</span>
               </div>
-              <div className="row g-3">
+              <div className="row g-3 align-items-stretch">
                 {starters.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                  <div key={idx} className="col-12 col-md-6 d-flex">
+                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
                       <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
                       <div className="flex-grow-1">
                         <div className="fw-bold">{item.name}</div>
@@ -133,10 +132,10 @@ export default function Menu() {
                 <h5 className="fw-bold mb-0">Mains</h5>
                 <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Signature plates</span>
               </div>
-              <div className="row g-3">
+              <div className="row g-3 align-items-stretch">
                 {mains.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                  <div key={idx} className="col-12 col-md-6 d-flex">
+                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
                       <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
                       <div className="flex-grow-1">
                         <div className="fw-bold">{item.name}</div>
@@ -154,10 +153,10 @@ export default function Menu() {
                 <h5 className="fw-bold mb-0">Desserts</h5>
                 <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>A sweet finish</span>
               </div>
-              <div className="row g-3">
+              <div className="row g-3 align-items-stretch">
                 {desserts.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                  <div key={idx} className="col-12 col-md-6 d-flex">
+                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
                       <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
                       <div className="flex-grow-1">
                         <div className="fw-bold">{item.name}</div>
@@ -175,10 +174,10 @@ export default function Menu() {
                 <h5 className="fw-bold mb-0">Wine Pairings</h5>
                 <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Curated by our sommelier</span>
               </div>
-              <div className="row g-3">
+              <div className="row g-3 align-items-stretch">
                 {winePairings.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                  <div key={idx} className="col-12 col-md-6 d-flex">
+                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
                       <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
                       <div className="flex-grow-1">
                         <div className="fw-bold">{item.name}</div>
