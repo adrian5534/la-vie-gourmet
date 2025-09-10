@@ -45,8 +45,8 @@ export default function Menu() {
         {/* Header */}
         <div className="d-flex align-items-center justify-content-between mb-3">
           <h2 className="fw-bold mb-0">Our Menu</h2>
-          <div>
-            <button className="btn btn-primary me-2">
+          <div className="menu-header-actions">
+            <button className="menu-header-btn me-2">
               <i className="fas fa-utensils me-2"></i> Chef's Tasting
             </button>
             <button className="btn btn-secondary">
@@ -58,12 +58,12 @@ export default function Menu() {
           A refined selection crafted nightly with seasonal ingredients.
         </div>
         {/* Filters */}
-        <div className="d-flex gap-2 mb-4">
-          <button className="btn btn-warning">All</button>
-          <button className="btn btn-warning">Tasting</button>
-          <button className="btn btn-warning">A La Carte</button>
-          <button className="btn btn-warning">Wine</button>
-          <button className="btn btn-warning">Vegetarian</button>
+        <div className="menu-filter-bar mb-4">
+          <button className="menu-filter-btn">All</button>
+          <button className="menu-filter-btn">Tasting</button>
+          <button className="menu-filter-btn">A La Carte</button>
+          <button className="menu-filter-btn">Wine</button>
+          <button className="menu-filter-btn">Vegetarian</button>
         </div>
         <div className="row">
           {/* Sidebar */}
@@ -97,7 +97,7 @@ export default function Menu() {
                         <div className="fw-bold">{item.name}</div>
                         <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
                       </div>
-                      {item.included && <span className="badge bg-secondary ms-3">Included</span>}
+                      {item.included && <span className="badge ms-3">Included</span>}
                     </div>
                   </div>
                 ))}
