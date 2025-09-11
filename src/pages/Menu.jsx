@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Global.css";
 import "../styles/Menu.css";
 
 const menuSections = [
-  { icon: "fas fa-utensils", label: "Tasting Menu" },
-  { icon: "fas fa-seedling", label: "Starters" },
-  { icon: "fas fa-drumstick-bite", label: "Mains" },
-  { icon: "fas fa-ice-cream", label: "Desserts" },
-  { icon: "fas fa-wine-glass-alt", label: "Wine Pairings" },
+  { icon: "fas fa-utensils", label: "Tasting Menu", filter: "tasting" },
+  { icon: "fas fa-seedling", label: "Starters", filter: "a-la-carte" },
+  { icon: "fas fa-drumstick-bite", label: "Mains", filter: "a-la-carte" },
+  { icon: "fas fa-ice-cream", label: "Desserts", filter: "a-la-carte" },
+  { icon: "fas fa-wine-glass-alt", label: "Wine Pairings", filter: "wine" },
+];
+
+const filterOptions = [
+  { label: "All", value: "all" },
+  { label: "Tasting", value: "tasting" },
+  { label: "A La Carte", value: "a-la-carte" },
+  { label: "Wine", value: "wine" },
+  { label: "Vegetarian", value: "vegetarian" },
 ];
 
 const tastingMenu = [
@@ -19,7 +27,7 @@ const tastingMenu = [
 ];
 
 const starters = [
-  { img: "/beet.jpg", name: "Roasted Beet Salad", desc: "Goat cheese, pistachio, citrus", price: "$18" },
+  { img: "/beet.jpg", name: "Roasted Beet Salad", desc: "Goat cheese, pistachio, citrus", price: "$18", vegetarian: true },
   { img: "/lobster.jpg", name: "Lobster Bisque", desc: "Cognac cream, chive", price: "$22" },
 ];
 
@@ -29,8 +37,8 @@ const mains = [
 ];
 
 const desserts = [
-  { img: "/souffle.jpg", name: "Chocolate Soufflé", desc: "Vanilla crème anglaise", price: "$14" },
-  { img: "/panna.jpg", name: "Elderflower Panna Cotta", desc: "Macerated berries", price: "$13" },
+  { img: "/souffle.jpg", name: "Chocolate Soufflé", desc: "Vanilla crème anglaise", price: "$14", vegetarian: true },
+  { img: "/panna.jpg", name: "Elderflower Panna Cotta", desc: "Macerated berries", price: "$13", vegetarian: true },
 ];
 
 const winePairings = [
@@ -39,6 +47,21 @@ const winePairings = [
 ];
 
 export default function Menu() {
+  const [selectedFilter, setSelectedFilter] = useState("all");
+
+  // Filtering logic
+  const showTasting = selectedFilter === "all" || selectedFilter === "tasting";
+  const showAlaCarte = selectedFilter === "all" || selectedFilter === "a-la-carte";
+  const showWine = selectedFilter === "all" || selectedFilter === "wine";
+  const showVegetarian = selectedFilter === "vegetarian";
+
+  const filteredStarters = showVegetarian
+    ? starters.filter(item => item.vegetarian)
+    : starters;
+  const filteredDesserts = showVegetarian
+    ? desserts.filter(item => item.vegetarian)
+    : desserts;
+
   return (
     <div style={{ background: "var(--background)", minHeight: "100vh", paddingTop: "36px" }}>
       <div className="container py-4">
@@ -59,20 +82,25 @@ export default function Menu() {
         </div>
         {/* Filters */}
         <div className="menu-filter-bar mb-4">
-          <button className="menu-filter-btn">All</button>
-          <button className="menu-filter-btn">Tasting</button>
-          <button className="menu-filter-btn">A La Carte</button>
-          <button className="menu-filter-btn">Wine</button>
-          <button className="menu-filter-btn">Vegetarian</button>
+          {filterOptions.map(option => (
+            <button
+              key={option.value}
+              className="menu-filter-btn"
+              style={selectedFilter === option.value ? { background: "var(--primary)", color: "#fff" } : {}}
+              onClick={() => setSelectedFilter(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
         </div>
         <div className="row">
           {/* Sidebar */}
           <div className="col-12 col-lg-3 mb-3 mb-lg-0">
-            <div className="bg-white rounded-3 p-3" style={{ border: "1px solid var(--border)" }}>
-              <div className="fw-bold mb-3">Sections</div>
+            <div className="menu-sidebar">
+              <div className="menu-sidebar-title">Sections</div>
               {menuSections.map((section, idx) => (
-                <button key={idx} className="btn btn-outline-secondary w-100 mb-2 text-start">
-                  <i className={`${section.icon} me-2`}></i>
+                <button key={idx} className="menu-section-btn">
+                  <i className={section.icon}></i>
                   {section.label}
                 </button>
               ))}
@@ -81,114 +109,124 @@ export default function Menu() {
           {/* Main Menu Content */}
           <div className="col-12 col-lg-9">
             {/* Tasting Menu */}
-            <div className="menu-section mb-4">
-              <div className="d-flex justify-content-between align-items-center mb-2">
-                <h5 className="fw-bold mb-0">Chef’s Tasting Menu</h5>
-                <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>
-                  7 courses • available nightly
-                </span>
-              </div>
-              <div className="row g-3 align-items-stretch">
-                {tastingMenu.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6 d-flex">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-                      <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
-                      <div className="flex-grow-1">
-                        <div className="fw-bold">{item.name}</div>
-                        <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+            {showTasting && (
+              <div className="menu-section mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h5 className="fw-bold mb-0">Chef’s Tasting Menu</h5>
+                  <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>
+                    7 courses • available nightly
+                  </span>
+                </div>
+                <div className="row g-3 align-items-stretch">
+                  {tastingMenu.map((item, idx) => (
+                    <div key={idx} className="col-12 col-md-6 d-flex">
+                      <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                        <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
+                        <div className="flex-grow-1">
+                          <div className="fw-bold">{item.name}</div>
+                          <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <div className="mt-2" style={{ color: "var(--muted-foreground)", fontSize: "0.9rem" }}>
+                  Optional wine pairing available
+                </div>
               </div>
-              <div className="mt-2" style={{ color: "var(--muted-foreground)", fontSize: "0.9rem" }}>
-                Optional wine pairing available
-              </div>
-            </div>
+            )}
             {/* Starters */}
-            <div className="menu-section mb-4">
-              <div className="d-flex justify-content-between align-items-center mb-2">
-                <h5 className="fw-bold mb-0">Starters</h5>
-                <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Choose to begin</span>
-              </div>
-              <div className="row g-3 align-items-stretch">
-                {starters.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6 d-flex">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-                      <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
-                      <div className="flex-grow-1">
-                        <div className="fw-bold">{item.name}</div>
-                        <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+            {showAlaCarte && filteredStarters.length > 0 && (
+              <div className="menu-section mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h5 className="fw-bold mb-0">Starters</h5>
+                  <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Choose to begin</span>
+                </div>
+                <div className="row g-3 align-items-stretch">
+                  {filteredStarters.map((item, idx) => (
+                    <div key={idx} className="col-12 col-md-6 d-flex">
+                      <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                        <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
+                        <div className="flex-grow-1">
+                          <div className="fw-bold">{item.name}</div>
+                          <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+                        </div>
+                        <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                       </div>
-                      <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             {/* Mains */}
-            <div className="menu-section mb-4">
-              <div className="d-flex justify-content-between align-items-center mb-2">
-                <h5 className="fw-bold mb-0">Mains</h5>
-                <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Signature plates</span>
-              </div>
-              <div className="row g-3 align-items-stretch">
-                {mains.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6 d-flex">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-                      <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
-                      <div className="flex-grow-1">
-                        <div className="fw-bold">{item.name}</div>
-                        <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+            {showAlaCarte && mains.length > 0 && (
+              <div className="menu-section mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h5 className="fw-bold mb-0">Mains</h5>
+                  <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Signature plates</span>
+                </div>
+                <div className="row g-3 align-items-stretch">
+                  {mains.map((item, idx) => (
+                    <div key={idx} className="col-12 col-md-6 d-flex">
+                      <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                        <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
+                        <div className="flex-grow-1">
+                          <div className="fw-bold">{item.name}</div>
+                          <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+                        </div>
+                        <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                       </div>
-                      <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             {/* Desserts */}
-            <div className="menu-section mb-4">
-              <div className="d-flex justify-content-between align-items-center mb-2">
-                <h5 className="fw-bold mb-0">Desserts</h5>
-                <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>A sweet finish</span>
-              </div>
-              <div className="row g-3 align-items-stretch">
-                {desserts.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6 d-flex">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-                      <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
-                      <div className="flex-grow-1">
-                        <div className="fw-bold">{item.name}</div>
-                        <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+            {showAlaCarte && filteredDesserts.length > 0 && (
+              <div className="menu-section mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h5 className="fw-bold mb-0">Desserts</h5>
+                  <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>A sweet finish</span>
+                </div>
+                <div className="row g-3 align-items-stretch">
+                  {filteredDesserts.map((item, idx) => (
+                    <div key={idx} className="col-12 col-md-6 d-flex">
+                      <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                        <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
+                        <div className="flex-grow-1">
+                          <div className="fw-bold">{item.name}</div>
+                          <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+                        </div>
+                        <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                       </div>
-                      <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             {/* Wine Pairings */}
-            <div className="menu-section mb-4">
-              <div className="d-flex justify-content-between align-items-center mb-2">
-                <h5 className="fw-bold mb-0">Wine Pairings</h5>
-                <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Curated by our sommelier</span>
-              </div>
-              <div className="row g-3 align-items-stretch">
-                {winePairings.map((item, idx) => (
-                  <div key={idx} className="col-12 col-md-6 d-flex">
-                    <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-                      <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
-                      <div className="flex-grow-1">
-                        <div className="fw-bold">{item.name}</div>
-                        <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+            {showWine && winePairings.length > 0 && (
+              <div className="menu-section mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h5 className="fw-bold mb-0">Wine Pairings</h5>
+                  <span style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>Curated by our sommelier</span>
+                </div>
+                <div className="row g-3 align-items-stretch">
+                  {winePairings.map((item, idx) => (
+                    <div key={idx} className="col-12 col-md-6 d-flex">
+                      <div className="menu-card d-flex align-items-center p-2 rounded-3 h-100 w-100" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
+                        <img src={item.img} alt={item.name} className="rounded-3 me-3" style={{ width: 56, height: 56, objectFit: "cover" }} />
+                        <div className="flex-grow-1">
+                          <div className="fw-bold">{item.name}</div>
+                          <div style={{ color: "var(--muted-foreground)", fontSize: "0.95rem" }}>{item.desc}</div>
+                        </div>
+                        <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                       </div>
-                      <span className="fw-bold ms-3" style={{ color: "var(--muted-foreground)" }}>{item.price}</span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
