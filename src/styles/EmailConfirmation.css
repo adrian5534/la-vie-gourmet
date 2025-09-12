@@ -1,0 +1,169 @@
+.email-confirmation-page {
+  padding-top: 36px;
+}
+
+.email-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(31,41,51,0.06);
+  padding: 1.25rem;
+  margin-bottom: 18px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--accent-foreground);
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-control {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--accent-foreground);
+  box-shadow: none;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(122,31,43,0.12);
+}
+
+.message-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.confirmed-badge {
+  background: var(--success);
+  color: var(--success-foreground);
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.message-area {
+  font-family: 'Inter', monospace;
+  font-size: 1rem;
+  min-height: 180px;
+  resize: vertical;
+}
+
+.ready-banner {
+  background: #e6f4ea;
+  color: #217a3c;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border: none;
+  text-align: center;
+}
+
+.attachments-section .attachment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--muted);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
+.delivery-section .delivery-options {
+  display: flex;
+  gap: 10px;
+}
+
+.gold-btn {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+.gold-btn:hover,
+.gold-btn:focus {
+  background: #b88e2c;
+  color: #fff;
+}
+
+.delivery-note {
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+}
+
+.after-section .after-options {
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.send-actions .btn {
+  min-width: 120px;
+}
+
+.email-footer {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 2px 12px rgba(31,41,51,0.06);
+  padding: 1rem 1.25rem;
+  margin-top: 32px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .email-card {
+    border-radius: 14px;
+    padding: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .email-card {
+    padding: 1rem;
+  }
+  .email-footer {
+    padding: 0.7rem 0.8rem;
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .email-confirmation-page h1 {
+    font-size: 1.4rem;
+  }
+  .email-card {
+    border-radius: 12px;
+    padding: 0.8rem;
+  }
+  .email-footer {
+    padding: 0.6rem 0.4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .email-confirmation-page {
+    padding-top: 18px;
+  }
+  .d-flex.align-items-center.justify-content-between.mb-3 {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+  .email-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 0.6rem 0.4rem;
+  }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function ReservationForm({
   values,
@@ -20,6 +21,8 @@ export default function ReservationForm({
     requests,
   } = values;
 
+  const navigate = useNavigate();
+
   const handleConfirm = (e) => {
     e.preventDefault();
     // Basic validation
@@ -32,6 +35,7 @@ export default function ReservationForm({
     if (!phone) return toast.error("Please enter your phone.");
 
     onConfirm?.();
+    navigate("/reservation-confirmed", { state: { ...values } });
   };
 
   const handleEmail = (e) => {
@@ -39,6 +43,7 @@ export default function ReservationForm({
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       return toast.error("Please enter a valid email to send confirmation.");
     onEmail?.();
+    navigate("/email-confirmation", { state: { ...values, emailSent: true } });
   };
 
   // Helpers to keep inputs controlled
@@ -156,14 +161,21 @@ export default function ReservationForm({
       </div>
 
       <div className="reserve-actions">
-        <button className="btn btn-primary reserve-primary" onClick={handleConfirm}>
+        <button
+          className="btn btn-primary reserve-primary"
+          onClick={handleConfirm}
+          type="button"
+        >
           Confirm Reservation
         </button>
-        <button className="btn btn-secondary reserve-secondary" onClick={handleEmail} type="button">
+        <button
+          className="btn btn-secondary reserve-secondary"
+          onClick={handleEmail}
+          type="button"
+        >
           Email Confirmation
         </button>
       </div>
-
       <div className="reserve-note">
         By confirming, you agree to our 24-hour cancellation policy.
       </div>
