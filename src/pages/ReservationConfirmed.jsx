@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/Global.css";
-import "../styles/reservationConfirmed.css";
+import "../styles/ReservationConfirmed.css";
 
 export default function ReservationConfirmed() {
   const location = useLocation();
