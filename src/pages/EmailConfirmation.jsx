@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/Global.css";
-import "../styles/emailConfirmation.css";
+import "../styles/EmailConfirmation.css";
 
 export default function EmailConfirmation() {
   const location = useLocation();
