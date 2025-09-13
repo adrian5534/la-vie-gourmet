@@ -18,7 +18,7 @@ export default function AppRoutes() {
       <Route path="/email-confirmation" element={<EmailConfirmation />} />
       <Route path="/about-chef" element={<AboutChef />} /> 
       <Route path="/contact" element={<Contact />} /> 
-      
+
     </Routes>
   );
 }

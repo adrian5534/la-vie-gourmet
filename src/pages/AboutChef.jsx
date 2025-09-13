@@ -9,7 +9,7 @@ export default function AboutChef() {
         <div className="chef-header-row">
           <div className="chef-photo-card">
             <img
-              src="/images/chef-eloise.jpg"
+              src="/chef-eloise.jpg"
               alt="Chef Éloise Martin"
               className="chef-photo"
             />
@@ -68,9 +68,9 @@ export default function AboutChef() {
           <div className="chef-info-col signature-card">
             <h3 className="section-title">Signature Dishes</h3>
             <div className="signature-dishes">
-              <img src="/images/dish-1.jpg" alt="Signature Dish 1" className="signature-dish-img" />
-              <img src="/images/dish-2.jpg" alt="Signature Dish 2" className="signature-dish-img" />
-              <img src="/images/dish-3.jpg" alt="Signature Dish 3" className="signature-dish-img" />
+              <img src="/amuse.jpg" alt="Signature Dish 1" className="signature-dish-img" />
+              <img src="/tuna.jpg" alt="Signature Dish 2" className="signature-dish-img" />
+              <img src="/wagyu.jpg" alt="Signature Dish 3" className="signature-dish-img" />
             </div>
           </div>
           <div className="chef-info-col team-card">
