@@ -53,6 +53,47 @@ Warm regards,
 La Vie Gourmet Team`
   );
 
+  // Button handlers
+  const handleSendToMe = () => {
+    alert("A confirmation email will be sent to your profile email address.");
+  };
+
+  const handleSendEmail = () => {
+    alert("Confirmation email sent to all recipients.");
+  };
+
+  const handlePreview = () => {
+    alert("Preview:\n\n" + message);
+  };
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(message);
+    alert("Message copied to clipboard.");
+  };
+
+  const handleRemoveAttachment = (attachment) => {
+    alert(`Removed attachment: ${attachment}`);
+  };
+
+  const handleCancel = () => {
+    if (window.confirm("Are you sure you want to cancel? Unsaved changes will be lost.")) {
+      // Add navigation or reset logic here
+      alert("Cancelled.");
+    }
+  };
+
+  const handleSendConfirmation = () => {
+    alert("Confirmation sent!");
+  };
+
+  const handleSaveDraft = () => {
+    alert("Draft saved.");
+  };
+
+  const handleSendNow = () => {
+    alert("Confirmation email sent now.");
+  };
+
   return (
     <div className="email-confirmation-page" style={{ background: "var(--background)", minHeight: "100vh" }}>
       <div className="container py-4">
@@ -60,14 +101,14 @@ La Vie Gourmet Team`
         <div className="header-row">
           <h1 className="mb-1">Send Email Confirmation</h1>
           <div className="header-actions">
-            <button type="button" className="custom-btn secondary">Send to Me</button>
-            <button type="button" className="custom-btn primary">Send Email</button>
+            <button type="button" className="custom-btn secondary" onClick={handleSendToMe}>Send to Me</button>
+            <button type="button" className="custom-btn primary" onClick={handleSendEmail}>Send Email</button>
           </div>
         </div>
         <div className="row g-4">
           {/* Left: Email Form */}
           <div className="col-12 col-lg-7">
-            <form className="email-card">
+            <form className="email-card" onSubmit={e => e.preventDefault()}>
               <div className="form-group">
                 <label className="form-label">Recipients</label>
                 <input
@@ -105,8 +146,8 @@ La Vie Gourmet Team`
                 <label className="form-label">Message</label>
                 <div className="message-toolbar mb-2">
                   <span className="badge confirmed-badge">Confirmed</span>
-                  <button type="button" className="custom-btn secondary small">Preview</button>
-                  <button type="button" className="custom-btn secondary small">Copy Text</button>
+                  <button type="button" className="custom-btn secondary small" onClick={handlePreview}>Preview</button>
+                  <button type="button" className="custom-btn secondary small" onClick={handleCopyText}>Copy Text</button>
                 </div>
                 <textarea
                   className="form-control message-area"
@@ -128,18 +169,18 @@ La Vie Gourmet Team`
                 <div className="fw-bold mb-2">Attachments</div>
                 <div className="attachment-row">
                   <span>Reservation PDF</span>
-                  <button type="button" className="custom-btn secondary small">Remove</button>
+                  <button type="button" className="custom-btn secondary small" onClick={() => handleRemoveAttachment("Reservation PDF")}>Remove</button>
                 </div>
                 <div className="attachment-row">
                   <span>QR Code Image</span>
-                  <button type="button" className="custom-btn secondary small">Remove</button>
+                  <button type="button" className="custom-btn secondary small" onClick={() => handleRemoveAttachment("QR Code Image")}>Remove</button>
                 </div>
               </div>
               <div className="delivery-section mb-3">
                 <div className="fw-bold mb-2">Delivery Options</div>
                 <div className="delivery-options">
-                  <button type="button" className="custom-btn gold me-2">Email</button>
-                  <button type="button" className="custom-btn gold">SMS Link</button>
+                  <button type="button" className="custom-btn gold me-2" onClick={() => alert("Email delivery selected.")}>Email</button>
+                  <button type="button" className="custom-btn gold" onClick={() => alert("SMS Link delivery selected.")}>SMS Link</button>
                 </div>
                 <div className="delivery-note mt-2">
                   We will send a copy to your profile email and any additional recipients listed above.
@@ -153,18 +194,18 @@ La Vie Gourmet Team`
                 </div>
               </div>
               <div className="send-actions custom-actions">
-                <button type="button" className="custom-btn secondary">Cancel</button>
-                <button type="button" className="custom-btn primary">Send Confirmation</button>
+                <button type="button" className="custom-btn secondary" onClick={handleCancel}>Cancel</button>
+                <button type="button" className="custom-btn primary" onClick={handleSendConfirmation}>Send Confirmation</button>
               </div>
             </div>
           </div>
         </div>
         {/* Footer: Ready Banner (green button) + Save Draft / Send Now */}
         <div className="email-footer mt-4 d-flex justify-content-between align-items-center">
-          <button type="button" className="ready-banner-btn">Ready to send confirmation email.</button>
+          <button type="button" className="ready-banner-btn" disabled>Ready to send confirmation email.</button>
           <div className="footer-actions">
-            <button type="button" className="custom-btn secondary">Save Draft</button>
-            <button type="button" className="custom-btn primary">Send Now</button>
+            <button type="button" className="custom-btn secondary" onClick={handleSaveDraft}>Save Draft</button>
+            <button type="button" className="custom-btn primary" onClick={handleSendNow}>Send Now</button>
           </div>
         </div>
       </div>

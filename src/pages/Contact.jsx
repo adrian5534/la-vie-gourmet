@@ -33,7 +33,15 @@ export default function Contact() {
               128 Rue des Arts, Suite 5, San Francisco, CA
             </div>
             <div className="contact-map">
-              <img src="/images/map-sf.png" alt="Map" className="contact-map-img" />
+              <iframe
+                title="Google Map"
+                src="https://www.google.com/maps?q=120+Orchard+St,+NYC&output=embed"
+                className="contact-map-img"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
           <div className="contact-col contact-events-card">

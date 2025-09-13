@@ -97,6 +97,7 @@
 }
 .copy-btn:hover,
 .copy-btn:focus {
+  background-color: var(--accent-foreground);
   border-color: var(--primary);
   color: var(--primary);
 }
@@ -187,8 +188,7 @@
 /* Footer Enhance */
 .enhance-footer {
   background: var(--card);
-  border-top: 1px solid var(--border);
-  border-radius: 0 0 16px 16px;
+  border-radius: 16px;
   box-shadow: 0 2px 12px rgba(31,41,51,0.06);
   padding: 1rem 1.25rem;
   margin-top: 32px;

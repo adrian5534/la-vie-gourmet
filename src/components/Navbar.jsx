@@ -16,7 +16,12 @@ export default function Navbar() {
           to="/"
           style={{ color: "var(--foreground)", fontWeight: 700 }}
         >
-          <span className="navbar-logo" />
+          <img
+            src="/logo.png"
+            alt="La Vie Gourmet Logo"
+            className="navbar-logo-img"
+            style={{ width: 32, height: 32, marginRight: 10 }}
+          />
           La Vie Gourmet
         </NavLink>
         {/* Burger Icon */}
