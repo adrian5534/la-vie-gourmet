@@ -1,0 +1,347 @@
+.about-chef-page {
+  background: var(--background);
+  min-height: 100vh;
+  padding-top: 32px;
+}
+
+.chef-header-row {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.chef-photo-card {
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(31,41,51,0.06);
+  padding: 0.5rem;
+  border: 2px solid var(--border);
+  max-width: 320px;
+}
+
+.chef-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+
+.chef-main-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.chef-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.chef-subtitle {
+  color: var(--muted-foreground);
+  font-size: 1.08rem;
+  margin-bottom: 1.2rem;
+}
+
+.chef-actions {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 1.1rem;
+}
+
+.gold-banner {
+  background: #b88e2c;
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 1.08rem;
+  font-weight: 500;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 2px 8px rgba(31,41,51,0.04);
+}
+
+.chef-quote {
+  margin-bottom: 0.8rem;
+}
+
+.chef-quote-author {
+  font-size: 0.98rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.chef-info-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chef-info-col {
+  flex: 1;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(31,41,51,0.06);
+  padding: 1.2rem 1.3rem;
+  min-width: 220px;
+}
+
+.section-title {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.philosophy-text {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.philosophy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.journey-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.journey-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.journey-year {
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 48px;
+  font-size: 1.05rem;
+}
+
+.journey-desc {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+}
+
+.signature-team-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.signature-card {
+  flex: 1;
+}
+
+.signature-dishes {
+  display: flex;
+  gap: 12px;
+}
+
+.signature-dish-img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(31,41,51,0.04);
+  border: 1px solid var(--border);
+}
+
+.team-card {
+  flex: 1;
+}
+
+.team-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  min-width: 120px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.team-role {
+  font-size: 0.98rem;
+  opacity: 0.85;
+}
+
+.chef-counter-row {
+  margin-top: 2.2rem;
+}
+
+.chef-counter-card {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(31,41,51,0.06);
+  padding: 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.counter-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.counter-desc {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+}
+
+.counter-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 0.5rem;
+}
+
+/* --- Custom Button Styles --- */
+.custom-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.08rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  margin: 0 2px;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(31,41,51,0.04);
+  display: inline-block;
+}
+
+.custom-btn.primary {
+  background: #7a1f2b;
+  color: #fff;
+}
+
+.custom-btn.primary:hover,
+.custom-btn.primary:focus {
+  background: #a12c3c;
+  color: #fff;
+}
+
+.custom-btn.secondary {
+  background: #fff;
+  color: #222;
+  border: 1.5px solid #e5ded7;
+}
+
+.custom-btn.secondary:hover,
+.custom-btn.secondary:focus {
+  background: #f5f1ee;
+  color: #7a1f2b;
+  border-color: #d8cfc7;
+}
+
+.custom-btn.gold {
+  background: #b88e2c;
+  color: #fff;
+}
+
+.custom-btn.gold:hover,
+.custom-btn.gold:focus {
+  background: #a07a24;
+  color: #fff;
+}
+
+.custom-btn.small {
+  font-size: 0.95rem;
+  padding: 6px 16px;
+  border-radius: 8px;
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 1200px) {
+  .chef-header-row,
+  .chef-info-row,
+  .signature-team-row {
+    gap: 1.2rem;
+  }
+  .chef-photo-card {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .chef-header-row,
+  .chef-info-row,
+  .signature-team-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .chef-photo-card {
+    max-width: 320px;
+    margin-bottom: 1rem;
+  }
+  .chef-main-info {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-chef-page {
+    padding-top: 18px;
+  }
+  .chef-name {
+    font-size: 1.3rem;
+  }
+  .chef-info-col,
+  .chef-counter-card {
+    padding: 0.7rem 0.6rem;
+    border-radius: 12px;
+  }
+  .signature-dish-img {
+    width: 80px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 4px;
+  }
+  .chef-header-row,
+  .chef-info-row,
+  .signature-team-row {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .chef-photo-card {
+    max-width: 100%;
+    margin-bottom: 0.7rem;
+  }
+  .chef-main-info {
+    min-width: 0;
+  }
+  .chef-info-col,
+  .chef-counter-card {
+    padding: 0.5rem 0.3rem;
+    border-radius: 10px;
+  }
+  .signature-dish-img {
+    width: 60px;
+    height: 40px;
+  }
+  .team-list {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

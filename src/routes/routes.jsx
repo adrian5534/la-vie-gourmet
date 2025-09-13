@@ -5,8 +5,8 @@ import Menu from "../pages/Menu";
 import Reservations from "../pages/Reservations";
 import ReservationConfirmed from "../pages/ReservationConfirmed";
 import EmailConfirmation from "../pages/EmailConfirmation";
-// import AboutChef from "./pages/AboutChef";
-// import Contact from "./pages/Contact";
+import AboutChef from "../pages/AboutChef";
+import Contact from "../pages/Contact";
 
 export default function AppRoutes() {
   return (
@@ -16,9 +16,9 @@ export default function AppRoutes() {
       <Route path="/reservations" element={<Reservations />} />
       <Route path="/reservation-confirmed" element={<ReservationConfirmed />} />
       <Route path="/email-confirmation" element={<EmailConfirmation />} />
-      {/* <Route path="/about-chef" element={<AboutChef />} /> */}
-      {/* <Route path="/contact" element={<Contact />} /> */}
-
+      <Route path="/about-chef" element={<AboutChef />} /> 
+      <Route path="/contact" element={<Contact />} /> 
+      
     </Routes>
   );
 }
