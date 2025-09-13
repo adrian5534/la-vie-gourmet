@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Global.css";
-import "../styles/aboutChef.css";
+import "../styles/AboutChef.css";
 
 export default function AboutChef() {
   return (
